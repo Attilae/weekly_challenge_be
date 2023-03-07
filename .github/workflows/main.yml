@@ -12,9 +12,6 @@ jobs:
     - uses: actions/checkout@v2.1.0
       with:
         fetch-depth: 100
-    - name: Change dir
-      run: |
-        cd public_html/wchallenge
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
@@ -23,4 +20,4 @@ jobs:
          password: ${{ secrets.FTP_PASSWORD }}
          port: 21
          git-ftp-args: --insecure
-         script: "./.scripts/deploy.sh"
+         script: "cd public_html/wchallenge && ./.scripts/deploy.sh"
