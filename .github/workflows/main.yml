@@ -5,6 +5,9 @@ jobs:
     environment: dev
     name: FTP-Deploy-Action
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./public_html/wchallenge
     steps:
     - uses: actions/checkout@v2.1.0
       with:
@@ -17,4 +20,4 @@ jobs:
          password: ${{ secrets.FTP_PASSWORD }}
          protocol: ftps
          port: 21
-         script: "cd /public_html/wchallenge && ./.scripts/deploy.sh"
+         script: "./.scripts/deploy.sh"
