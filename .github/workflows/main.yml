@@ -17,3 +17,4 @@ jobs:
          password: ${{ secrets.FTP_PASSWORD }}
          protocol: ftps
          port: 21
+         script: "cd /public_html/wchallenge && ./.scripts/deploy.sh"
