@@ -20,4 +20,5 @@ jobs:
          password: ${{ secrets.FTP_PASSWORD }}
          port: 21
          git-ftp-args: --insecure
-         script: "cd public_html/wchallenge && ./.scripts/deploy.sh"
+         server-dir: public_html/wchallenge
+         script: "./.scripts/deploy.sh"
