@@ -11,14 +11,16 @@ jobs:
     steps:
     - uses: actions/checkout@v2.1.0
       with:
-        fetch-depth: 2
+        fetch-depth: 100
+    - name: Change dir
+      run: |
+        cd public_html/wchallenge
     - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
-         working-directory: ./public_html/wchallenge
-         server: ${{ secrets.FTP_SERVER }}
+         server: sftp://${{ secrets.FTP_SERVER }}
          username: ${{ secrets.FTP_USERNAME }}
          password: ${{ secrets.FTP_PASSWORD }}
-         protocol: ftps
          port: 21
+         git-ftp-args: --insecure
          script: "./.scripts/deploy.sh"
