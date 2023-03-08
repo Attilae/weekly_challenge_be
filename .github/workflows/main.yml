@@ -5,15 +5,20 @@ jobs:
     environment: dev
     name: FTP-Deploy-Action
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./public_html/wchallenge
     steps:
     - uses: actions/checkout@v2.1.0
       with:
         fetch-depth: 2
     - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      uses: SamKirkland/FTP-Deploy-Action@4.3.3
       with:
-         server: ${{ secrets.FTP_SERVER }}/public_html/wchallenge
+         server: ${{ secrets.FTP_SERVER }}
          username: ${{ secrets.FTP_USERNAME }}
          password: ${{ secrets.FTP_PASSWORD }}
-         protocol: ftps
          port: 21
+         git-ftp-args: --insecure
+         server-dir: public_html/wchallenge/
+         script: "./.scripts/deploy.sh"
