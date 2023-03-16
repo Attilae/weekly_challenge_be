@@ -21,10 +21,13 @@ class ChallengeApplicationController extends Controller
     {
         $application = ChallengeApplication::with('user')->find($request->id);
 
+        preg_match('/src="([^"]+)"/', $application->url, $match);
+        $url = $match[1];
+
         return [
             "status" => 1,
             "data" => [
-                'url' => $application->url,
+                'url' => $url,
                 'user' => $application->user
             ]
         ];

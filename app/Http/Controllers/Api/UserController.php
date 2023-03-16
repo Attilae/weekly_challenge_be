@@ -19,7 +19,7 @@ class UserController extends Controller
 
             $validateUser = Validator::make($request->all(),
                 [
-                    'data.attributes.password' => 'required'
+                    'password' => 'required|confirmed'
                 ]);
 
             if ($validateUser->fails()) {
@@ -31,7 +31,7 @@ class UserController extends Controller
             }
 
             $user = User::find(Auth::id());
-            $user->password = Hash::make($request['data']['attributes']['password']);
+            $user->password = Hash::make($request['password']);
             $user->save();
 
             return response()->json([
