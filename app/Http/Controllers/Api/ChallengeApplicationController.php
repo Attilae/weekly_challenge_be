@@ -33,6 +33,18 @@ class ChallengeApplicationController extends Controller
         ];
     }
 
+    public function me(Request $request)
+    {
+        $applications = ChallengeApplication::where('user_id', Auth::id())->get();
+
+        return [
+            "status" => 1,
+            "data" => [
+                'applications' => $applications
+            ]
+        ];
+    }
+
     public function store(Request $request)
     {
         $request->validate([
