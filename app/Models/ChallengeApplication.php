@@ -25,6 +25,6 @@ class ChallengeApplication extends Model
 
     public function challenge()
     {
-        return $this->hasOne(Challenge::class, 'challenge_id');
+        return $this->hasOne(Challenge::class, 'id', 'challenge_id');
     }
 }

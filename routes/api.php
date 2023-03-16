@@ -31,6 +31,6 @@ Route::resource('challenges', \App\Http\Controllers\Api\ChallengeController::cla
 Route::get('/challenges/{id}/applications', [\App\Http\Controllers\Api\ChallengeApplicationController::class, 'index'])->middleware('auth:sanctum');
 Route::get('/application/{id}', [\App\Http\Controllers\Api\ChallengeApplicationController::class, 'show'])->middleware('auth:sanctum');
 Route::post('/application/create', [\App\Http\Controllers\Api\ChallengeApplicationController::class, 'store'])->middleware('auth:sanctum');
-Route::post('/applications/me', [\App\Http\Controllers\Api\ChallengeApplicationController::class, 'me'])->middleware('auth:sanctum');
+Route::get('/applications/me', [\App\Http\Controllers\Api\ChallengeApplicationController::class, 'me'])->middleware('auth:sanctum');
 
 Route::apiResource('posts', PostController::class)->middleware('auth:sanctum');

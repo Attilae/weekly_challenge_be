@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\ChallengeApplication;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ChallengeApplicationController extends Controller
 {
@@ -35,7 +36,7 @@ class ChallengeApplicationController extends Controller
 
     public function me(Request $request)
     {
-        $applications = ChallengeApplication::where('user_id', Auth::id())->get();
+        $applications = ChallengeApplication::where('user_id', Auth::id())->with('challenge')->get();
 
         return [
             "status" => 1,
