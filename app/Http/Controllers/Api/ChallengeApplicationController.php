@@ -29,6 +29,7 @@ class ChallengeApplicationController extends Controller
             "status" => 1,
             "data" => [
                 'url' => $url,
+                'description' => $application->description,
                 'user' => $application->user
             ]
         ];
