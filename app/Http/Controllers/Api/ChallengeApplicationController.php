@@ -54,6 +54,7 @@ class ChallengeApplicationController extends Controller
 
         $application = new ChallengeApplication();
         $application->url = $request->url;
+        $application->description = $request->description;
         $application->user_id = $request->user_id;
         $application->challenge_id = $request->challenge_id;
         $application->save();

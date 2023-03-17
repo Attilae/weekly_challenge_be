@@ -33,4 +33,7 @@ Route::get('/application/{id}', [\App\Http\Controllers\Api\ChallengeApplicationC
 Route::post('/application/create', [\App\Http\Controllers\Api\ChallengeApplicationController::class, 'store'])->middleware('auth:sanctum');
 Route::get('/applications/me', [\App\Http\Controllers\Api\ChallengeApplicationController::class, 'me'])->middleware('auth:sanctum');
 
+Route::get('/comments/{id}', [\App\Http\Controllers\Api\CommentController::class, 'index'])->middleware('auth:sanctum');
+Route::post('/comments', [\App\Http\Controllers\Api\CommentController::class, 'store'])->middleware('auth:sanctum');
+
 Route::apiResource('posts', PostController::class)->middleware('auth:sanctum');
